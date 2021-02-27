@@ -26,7 +26,7 @@ public abstract class Person {
     /**
      * Method for getting the first name of the person.
      *
-     * @return The first name of the person.
+     * @return {@code String} first name of the person.
      */
     public String getFirstname() {
         return firstname;
@@ -35,7 +35,7 @@ public abstract class Person {
     /**
      * Method for setting the first name of the person.
      *
-     * @param firstname The first name to set.
+     * @param firstname {@code String} first name to set.
      */
     public void setFirstname(String firstname) {
         this.firstname = firstname;
@@ -44,7 +44,7 @@ public abstract class Person {
     /**
      * Method for getting the last name of the person.
      *
-     * @return The last name of the person.
+     * @return {@code String} last name of the person.
      */
     public String getLastName() {
         return lastName;
@@ -53,7 +53,7 @@ public abstract class Person {
     /**
      * Method for setting the last name of the person.
      *
-     * @param lastName The last name to set.
+     * @param lastName {@code String} last name to set.
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -62,7 +62,7 @@ public abstract class Person {
     /**
      * Method for getting the social security number of the person.
      *
-     * @return The social security number of the person.
+     * @return {@code String} social security number of the person.
      */
     public String getSocialSecurityNumber() {
         return socialSecurityNumber;
@@ -71,24 +71,29 @@ public abstract class Person {
     /**
      * Method for setting the social security number of the person.
      *
-     * @param socialSecurityNumber The social security number to set.
+     * @param socialSecurityNumber {@code String} social security number to set.
      */
     public void setSocialSecurityNumber(String socialSecurityNumber) {
         this.socialSecurityNumber = socialSecurityNumber;
     }
 
     /**
-     * Method for getting the full name of the person.
+     * Method for getting the full name of the person as a {@code String} in the format: "first name, last name".
      *
-     * @return The persons full name.
+     * @return {@code String} persons full name.
      */
     public String getFullName() {
         return this.lastName + ", " + this.firstname;
     }
 
+    /**
+     * Gives a printable {@code String} displaying full name and social security number.
+     *
+     * @return {@code String} persons full name and social security number.
+     */
     @Override
     public String toString() {
-        return "name : " + getFullName() + "\n" +
+        return "Name : " + getFullName() + "\n" +
                 "SSN : " + this.socialSecurityNumber;
     }
 
