@@ -6,7 +6,7 @@ public class Employee extends Person {
      * Creates an instance of an employee.
      *
      * @param firstname            The first name of the employee.
-     * @param lastName             The last name of the emloyee.
+     * @param lastName             The last name of the employee.
      * @param socialSecurityNumber The social security number of the employee.
      */
     public Employee(String firstname, String lastName, String socialSecurityNumber) {
