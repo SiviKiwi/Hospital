@@ -80,7 +80,7 @@ public abstract class Person {
     /**
      * Method for getting the full name of the person as a {@code String} in the format: "first name, last name".
      *
-     * @return {@code String} persons full name.
+     * @return {@code String} person's full name.
      */
     public String getFullName() {
         return this.lastName + ", " + this.firstname;
@@ -89,7 +89,7 @@ public abstract class Person {
     /**
      * Gives a printable {@code String} displaying full name and social security number.
      *
-     * @return {@code String} persons full name and social security number.
+     * @return {@code String} person's full name and social security number.
      */
     @Override
     public String toString() {
