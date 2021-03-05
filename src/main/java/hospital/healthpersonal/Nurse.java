@@ -2,9 +2,14 @@ package hospital.healthpersonal;
 
 import hospital.Employee;
 
+/**
+ * Represents a nurse with a first name, last name and a unique social security number.
+ *
+ * @author Sivert Askeland Laudal
+ */
 public class Nurse extends Employee {
     /**
-     * Creates an instance of an employee.
+     * Creates an instance of a nurse.
      *
      * @param firstname            The first name of the nurse.
      * @param lastName             The last name of the nurse.

@@ -2,6 +2,11 @@ package hospital.healthpersonal.doctor;
 
 import hospital.Patient;
 
+/**
+ * Represents a general practitioner with a first name, last name and a unique social security number.
+ *
+ * @author Sivert Askeland Laudal
+ */
 public class GeneralPractitioner extends Doctor {
     /**
      * Creates an instance of a general practitioner.

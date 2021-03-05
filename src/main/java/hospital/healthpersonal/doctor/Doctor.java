@@ -3,6 +3,11 @@ package hospital.healthpersonal.doctor;
 import hospital.Employee;
 import hospital.Patient;
 
+/**
+ * Represents a doctor with a first name, last name and a unique social security number.
+ *
+ * @author Sivert Askeland Laudal
+ */
 public abstract class Doctor extends Employee {
     /**
      * Creates an instance of a doctor.

@@ -1,5 +1,10 @@
 package hospital;
 
+/**
+ * Represents a Patient with a first name, last name and a unique social security number.
+ *
+ * @author Sivert Askeland Laudal
+ */
 public class Patient extends Person implements Diagnosable {
 
     private String diagnosis = "";
