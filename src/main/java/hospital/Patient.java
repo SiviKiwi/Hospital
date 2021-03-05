@@ -16,18 +16,29 @@ public class Patient extends Person implements Diagnosable {
     }
 
     /**
-     * Method for getting the
-     * @return
+     * Method for getting the diagnosis of the person.
+     *
+     * @return {@code String} diagnosis of the person.
      */
     protected String getDiagnosis() {
         return this.diagnosis;
     }
 
+    /**
+     * Method for setting the diagnosis of the person.
+     *
+     * @param diagnosis {@code String} diagnosis to set.
+     */
     @Override
     public void setDiagnosis(String diagnosis) {
         this.diagnosis = diagnosis;
     }
 
+    /**
+     * Gives a printable {@code String} displaying full name and social security number.
+     *
+     * @return {@code String} persons full name and social security number.
+     */
     @Override
     public String toString() {
         return super.toString();
