@@ -1,11 +1,13 @@
 package hospital;
 
+import java.io.Serializable;
+
 /**
  * Represents a person with a first name, last name and a unique social security number.
  *
  * @author Sivert Askeland Laudal
  */
-public abstract class Person {
+public abstract class Person implements Serializable {
     private String firstname;
     private String lastName;
     private String socialSecurityNumber;
@@ -78,7 +80,7 @@ public abstract class Person {
     }
 
     /**
-     * Method for getting the full name of the person as a {@code String} in the format: "first name, last name".
+     * Method for getting the full name of the person as a {@code String} in the format: "last name, first name".
      *
      * @return {@code String} person's full name.
      */
