@@ -39,7 +39,7 @@ public class RemoveTest {
     public void testRemoveWithInvalidInput() {
         Nurse nurse = new Nurse("Test", "Person", "12345678910");
         Exception exception = assertThrows(RemoveException.class, () -> {
-           this.department.remove(nurse);
+            this.department.remove(nurse);
         });
 
     }

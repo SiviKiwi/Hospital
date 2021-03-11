@@ -65,6 +65,7 @@ public class HospitalTest {
             assertTrue(actualMessage.contains(expectedMessage));
 
         }
+
         @Test
         @DisplayName("Test addDepartment-method with existing input")
         public void testAddDepartmentExistingInput() {
