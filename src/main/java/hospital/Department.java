@@ -128,7 +128,7 @@ public class Department {
     }
 
     /**
-     * Checks if given this department is equal to another department by comparing the names.
+     * Checks if this department is equal to another department by comparing the names.
      *
      * @param o {@code Department} to check if equal
      * @return True if equal, false if not.
