@@ -20,6 +20,12 @@ public abstract class Person implements Serializable {
      * @param socialSecurityNumber The social security number of the person.
      */
     protected Person(String firstname, String lastName, String socialSecurityNumber) {
+        if (firstname.isBlank() || lastName.isBlank() || socialSecurityNumber.isBlank()){
+            throw new IllegalArgumentException("Parameters cannot be blank or null!");
+        } else if (socialSecurityNumber.length() != 11){
+            throw new IllegalArgumentException("socialSecurityNumber must be exactly 11 characters long");
+        }
+
         this.firstname = firstname;
         this.lastName = lastName;
         this.socialSecurityNumber = socialSecurityNumber;
@@ -40,6 +46,9 @@ public abstract class Person implements Serializable {
      * @param firstname {@code String} first name to set.
      */
     public void setFirstname(String firstname) {
+        if (firstname.isBlank()){
+            throw new IllegalArgumentException("firstName cannot be blank or null!");
+        }
         this.firstname = firstname;
     }
 
@@ -58,6 +67,9 @@ public abstract class Person implements Serializable {
      * @param lastName {@code String} last name to set.
      */
     public void setLastName(String lastName) {
+        if (firstname.isBlank()){
+            throw new IllegalArgumentException("lastName cannot be blank or null!");
+        }
         this.lastName = lastName;
     }
 
@@ -76,6 +88,11 @@ public abstract class Person implements Serializable {
      * @param socialSecurityNumber {@code String} social security number to set.
      */
     public void setSocialSecurityNumber(String socialSecurityNumber) {
+        if (socialSecurityNumber.isBlank()){
+            throw new IllegalArgumentException("socialSecurityNumber cannot be blank or null!");
+        }else if (socialSecurityNumber.length() != 11){
+            throw new IllegalArgumentException("socialSecurityNumber must be exactly 11 characters long!");
+        }
         this.socialSecurityNumber = socialSecurityNumber;
     }
 
