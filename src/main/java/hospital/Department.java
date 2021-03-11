@@ -1,5 +1,7 @@
 package hospital;
 
+import hospital.exception.RemoveException;
+
 import javax.management.InstanceAlreadyExistsException;
 import java.util.HashMap;
 import java.util.Objects;
@@ -62,10 +64,11 @@ public class Department {
      * Method for adding an employee to the register.
      *
      * @param employee {@code Employee} object to add.
+     * @throws InstanceAlreadyExistsException If a {@code Person} with the same SSN already exist in the register.
      */
     public void addEmployee(Employee employee) throws InstanceAlreadyExistsException {
         if (checkForPerson(employee)) {
-            throw new InstanceAlreadyExistsException("An instance of this Employee already exist in the register");
+            throw new InstanceAlreadyExistsException("An instance of this Employee with this SSN already exist in the register");
         }
         employees.put(employee.getSocialSecurityNumber(), employee);
     }
@@ -83,12 +86,29 @@ public class Department {
      * Method for adding a patient to the register.
      *
      * @param patient {@code Patient} object to add.
+     * @throws InstanceAlreadyExistsException If a {@code Person} with the same SSN already exist in the register.
      */
     public void addPatient(Patient patient) throws InstanceAlreadyExistsException {
         if (checkForPerson(patient)) {
-            throw new InstanceAlreadyExistsException("An instance of this Patient already exist in the register");
+            throw new InstanceAlreadyExistsException("An instance of this Patient with this SSN already exist in the register");
         }
         patients.put(patient.getSocialSecurityNumber(), patient);
+    }
+
+    /**
+     * Method for removing a person from the register.
+     * @param person {@code Person} that is to be removed.
+     * @throws RemoveException If {@code Person} is not in the register.
+     */
+    public void remove(Person person) throws RemoveException {
+        if (!checkForPerson(person)){
+            throw new RemoveException("Person is not in the register.");
+        }
+        if (person instanceof Employee){
+            employees.remove(person.getSocialSecurityNumber());
+        }else if (person instanceof Patient){
+            patients.remove(person.getSocialSecurityNumber());
+        }
     }
 
     /**
