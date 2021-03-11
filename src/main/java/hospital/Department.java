@@ -68,7 +68,9 @@ public class Department {
      * @throws InstanceAlreadyExistsException If a {@code Person} with the same SSN already exist in the register.
      */
     public void addEmployee(Employee employee) throws InstanceAlreadyExistsException {
-        if (checkForPerson(employee)) {
+        if (employee == null){
+            throw new NullPointerException("Can't add null to register!");
+        }else if (checkForPerson(employee)) {
             throw new InstanceAlreadyExistsException("An instance of this Employee with this SSN already exist in the register");
         }
         employees.put(employee.getSocialSecurityNumber(), employee);
@@ -90,8 +92,10 @@ public class Department {
      * @throws InstanceAlreadyExistsException If a {@code Person} with the same SSN already exist in the register.
      */
     public void addPatient(Patient patient) throws InstanceAlreadyExistsException {
-        if (checkForPerson(patient)) {
-            throw new InstanceAlreadyExistsException("An instance of this Patient with this SSN already exist in the register");
+        if (patient == null){
+            throw new NullPointerException("Can't add null to register!");
+        } else if (checkForPerson(patient)) {
+            throw new InstanceAlreadyExistsException("An instance of this Patient with this SSN already exist in the register!");
         }
         patients.put(patient.getSocialSecurityNumber(), patient);
     }
