@@ -3,6 +3,7 @@ package hospital;
 import hospital.exception.RemoveException;
 
 import javax.management.InstanceAlreadyExistsException;
+import javax.management.InstanceNotFoundException;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -93,6 +94,19 @@ public class Department {
             throw new InstanceAlreadyExistsException("An instance of this Patient with this SSN already exist in the register");
         }
         patients.put(patient.getSocialSecurityNumber(), patient);
+    }
+
+    public Person getPerson(String socialSecurityNumber) throws InstanceNotFoundException {
+        Person person = null;
+        person = getPatients().get(socialSecurityNumber);
+        if (person == null){
+            person = getEmployees().get(socialSecurityNumber);
+        }
+        if (person == null){
+            throw new InstanceNotFoundException("No person with that SSN in the register.");
+        }else {
+            return person;
+        }
     }
 
     /**
