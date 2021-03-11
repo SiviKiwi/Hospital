@@ -96,31 +96,39 @@ public class Department {
         patients.put(patient.getSocialSecurityNumber(), patient);
     }
 
+    /**
+     * Method for getting a Person from the register.
+     *
+     * @param socialSecurityNumber The SSN of the person.
+     * @return The Person that has a matching SSN.
+     * @throws InstanceNotFoundException If no Person has the given SSN.
+     */
     public Person getPerson(String socialSecurityNumber) throws InstanceNotFoundException {
         Person person = null;
         person = getPatients().get(socialSecurityNumber);
-        if (person == null){
+        if (person == null) {
             person = getEmployees().get(socialSecurityNumber);
         }
-        if (person == null){
+        if (person == null) {
             throw new InstanceNotFoundException("No person with that SSN in the register.");
-        }else {
+        } else {
             return person;
         }
     }
 
     /**
      * Method for removing a person from the register.
+     *
      * @param person {@code Person} that is to be removed.
      * @throws RemoveException If {@code Person} is not in the register.
      */
     public void remove(Person person) throws RemoveException {
-        if (!checkForPerson(person)){
+        if (!checkForPerson(person)) {
             throw new RemoveException("Person is not in the register.");
         }
-        if (person instanceof Employee){
+        if (person instanceof Employee) {
             employees.remove(person.getSocialSecurityNumber());
-        }else if (person instanceof Patient){
+        } else if (person instanceof Patient) {
             patients.remove(person.getSocialSecurityNumber());
         }
     }
