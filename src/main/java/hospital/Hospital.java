@@ -48,7 +48,9 @@ public class Hospital {
      * @param department {@code Department} object to add.
      */
     public void addDepartment(Department department) throws InstanceAlreadyExistsException {
-        if (departments.contains(department)) {
+        if (department == null){
+            throw new NullPointerException("Can't add null to register!");
+        }else if (departments.contains(department)) {
             throw new InstanceAlreadyExistsException("The department already exist in the register!");
         }
         departments.add(department);
