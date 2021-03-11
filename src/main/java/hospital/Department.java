@@ -1,5 +1,6 @@
 package hospital;
 
+import javax.management.InstanceAlreadyExistsException;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -18,6 +19,10 @@ public class Department {
      * @param departmentName {@code String} name of the department.
      */
     public Department(String departmentName) {
+        if (departmentName.isBlank()) {
+            throw new IllegalArgumentException("Department name can't be blank or null!");
+        }
+
         this.departmentName = departmentName;
         employees = new HashMap<>();
         patients = new HashMap<>();
@@ -38,6 +43,9 @@ public class Department {
      * @param departmentName {@code String} department name to set.
      */
     public void setDepartmentName(String departmentName) {
+        if (departmentName.isBlank()) {
+            throw new IllegalArgumentException("Department name can't be blank or null!");
+        }
         this.departmentName = departmentName;
     }
 
@@ -53,9 +61,12 @@ public class Department {
     /**
      * Method for adding an employee to the register.
      *
-     * @param employee {Code Employee} object to add.
+     * @param employee {@code Employee} object to add.
      */
-    public void addEmployee(Employee employee) {
+    public void addEmployee(Employee employee) throws InstanceAlreadyExistsException {
+        if (checkForPerson(employee)) {
+            throw new InstanceAlreadyExistsException("An instance of this Employee already exist in the register");
+        }
         employees.put(employee.getSocialSecurityNumber(), employee);
     }
 
@@ -71,10 +82,29 @@ public class Department {
     /**
      * Method for adding a patient to the register.
      *
-     * @param patient {Code Patient} object to add.
+     * @param patient {@code Patient} object to add.
      */
-    public void addPatient(Patient patient) {
+    public void addPatient(Patient patient) throws InstanceAlreadyExistsException {
+        if (checkForPerson(patient)) {
+            throw new InstanceAlreadyExistsException("An instance of this Patient already exist in the register");
+        }
         patients.put(patient.getSocialSecurityNumber(), patient);
+    }
+
+    /**
+     * Checks if a person is already stored in the register.
+     *
+     * @param person {@code Person} looked for in the register.
+     * @return True if in register, false if not.
+     */
+    private boolean checkForPerson(Person person) {
+        boolean personInRegister = false;
+        if (person instanceof Employee) {
+            personInRegister = employees.containsKey(person.getSocialSecurityNumber());
+        } else if (person instanceof Patient) {
+            personInRegister = patients.containsKey(person.getSocialSecurityNumber());
+        }
+        return personInRegister;
     }
 
     /**
@@ -99,7 +129,7 @@ public class Department {
     /**
      * Creates a string representation of the department and all patients and employees in it.
      *
-     * @return {code @String} representation of the department and all patients and employees in it.
+     * @return {@code String} representation of the department and all patients and employees in it.
      */
     @Override
     public String toString() {
